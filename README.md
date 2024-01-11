@@ -1,73 +1,44 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Blog Web Application
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project implements a blog REST-API web application using NestJS with a service oriented architecture. 
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Key Features
 
-## Description
+- Monolithic application structure
+- CRUD operations for blog posts using Postgres database
+- Authentication with Firebase
+  - User registration 
+  - Login functionality in client side
+  - passport-firebase strategy authentication
+- Blog post creation, viewing, editing and deletion
+- Input validation using DTOs
+- Error handling with proper HTTP status codes  
+- Image uploads with Multer
+- HTTP request and error logging with Pino
+- Role based access control for users and admins
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Authentication
 
-## Installation
+Users can register by providing basic profile information like email and name. Registered users are assigned a 'USER' role by default. The role can be updated to 'ADMIN' in the database after registration if elevated permissions are needed.
 
-```bash
-$ pnpm install
-```
+The login functionality returns a JWT token that should be attached as a Bearer token to authenticate subsequent API requests. An example HTML page is provided in `client-example` folder to demonstrate getting this token with the Firebase library.
 
-## Running the app
+## Running Locally
 
-```bash
-# development
-$ pnpm run start
+To run this app on your local machine, follow these steps:
 
-# watch mode
-$ pnpm run start:dev
+1. Install dependencies with `pnpm install`
+2. Configure environment variables in a `.env` file with database credentials 
+3. Start the server with `pnpm run start:dev`
 
-# production mode
-$ pnpm run start:prod
-```
+## Potential Improvements
 
-## Test
+While core features were implemented, there is a lot of room for additional features and improvements:
 
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Migrate to microservices architecture
+- Additional CRUD operations for comments, categories etc 
+- Advanced filtering/search functionality
+- Support for tagging posts
+- User profiles and account management
+- Admin dashboard 
+- etc
